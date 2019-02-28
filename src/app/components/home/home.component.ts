@@ -84,7 +84,6 @@ export class HomeComponent implements OnInit {
       });
 
       this.discoveredDevice.connect();
-      this.alreadyConnected = true;
 
       this.discoveredDevice.on('connected', () => {
         console.log('--- connected --- to ' + this.lampSetup.host);
@@ -105,7 +104,6 @@ export class HomeComponent implements OnInit {
   handleConnection(): void {
     const app = require('electron').remote.app;
     let timedDisconnect;
-
 
     app.on('browser-window-blur', () => {
       console.log('--- window blurred ---');

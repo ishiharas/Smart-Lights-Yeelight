@@ -1,6 +1,7 @@
 [![Make a pull request][prs-badge]][prs]
 [![License](http://img.shields.io/badge/Licence-GNU-brightgreen.svg)](LICENSE.md)
 
+# Smart Lights for Yeelight
 # Introduction
 
 Smart Lights for Yeelight is created to control your bulbs in form of a Mac OS tray app.
@@ -15,7 +16,7 @@ This enables the device control through your local network. Vice Versa the clien
 the same network. Use the Yeelight App on your smartphone to activate this option. 
 
 ## Direct Download
-<summary><a href="https://github.com/ishiharas/Smart-Lights-Yeelight/releases/latest">Latest Release</a></summary>
+* <summary><a href="https://github.com/ishiharas/Smart-Lights-Yeelight/releases/latest">Latest Release</a></summary>
 
 ## Getting Started
 
@@ -48,6 +49,7 @@ npm install
 |Command|Description|
 |--|--|
 |`npm run electron:mac`|  On a MAC OS, builds your application and generates a `.app` file of your application that can be run on Mac |
+
 
 [license-badge]: https://img.shields.io/badge/license-Apache2-blue.svg?style=flat
 [license]: https://github.com/ishiharas/smart-lights-yeelight/blob/master/LICENSE.md
