@@ -4,7 +4,9 @@
 # Introduction
 
 Smart Lights for Yeelight is created to control your bulbs in form of a Mac OS tray app.
-The user interface is kept simple and clean to integrate seamlessly in your OSX device.  
+The user interface is kept simple and clean to integrate seamlessly in your OSX device.
+
+<img src="https://user-images.githubusercontent.com/43359029/53537018-d0c72500-3b08-11e9-934c-3bb97e7d953e.png" width="500"/>
 
 ## Usage
 
