@@ -1,7 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 html, body {
   margin: 0;
   padding: 0;
 
-  height: 100%;
+  max-height: 100%;
+
+  overflow-x: hidden;
+
+  font-family: Roboto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
+
+.dialog-panel .mat-dialog-container {
+  overflow-x: hidden;
+  background-color: rgb(79, 81, 83);
 }

@@ -1,12 +1,8 @@
 .container {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: url(../../../assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
+  color: black;
+  padding-top: 25px;
+  overflow: hidden;
 
   .title {
     color: white;
@@ -14,4 +10,98 @@
     padding:50px 20px;
   }
 
+  .power {
+    background-color: rgb(8, 111, 8);
+    color: rgb(255, 255, 255);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    line-height: 0px;
+    margin-bottom: 15px;
+  }
+
+  .offline {
+    background-color: grey;
+  }
+
+  .settings {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    min-width: 0px;
+    margin-top: 5px;
+    margin-right: 5px;
+    line-height: 0px;
+    background-color: rgb(95, 97, 98);
+  }
+
+  .settings-icon {
+    color: rgb(255, 255, 255);
+  }
+
+  .divide {
+    height: 10px;
+    width: 300px;
+    color: black;
+    margin-top: 10px;
+  }
+
+  .description {
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 8px #FF0000;
+  
+  }
+
+  mat-slider {
+    width: 200px;
+  }
+  
+  .slider-color {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider-circle {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 112px;
+  }
+
+  .sun {
+    padding-right: 10px;
+    font-size: 15px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+
+  }
+
+  ::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: rgb(193, 0, 0);
+  } 
+
+  ::ng-deep .mat-accent .mat-slider-thumb-label {
+      background-color: rgb(189, 0, 0);
+  } 
+
+  ::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: rgb(179, 0, 0);
+} 
+
+
+}
+
+.blurred {
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+   filter: blur(4px);
+} 
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

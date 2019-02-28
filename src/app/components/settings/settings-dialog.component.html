@@ -1,0 +1,16 @@
+<h2 matDialogTitle style="color: rgb(255, 255, 255)">Find Device</h2>
+<mat-dialog-content>
+  <mat-form-field color="warn" style="width: 100%">
+    <select placeholder="Yeelight Device" matNativeControl [ngModel]="data" (ngModelChange)="setNewSelection($event)">
+        <option *ngFor="let lamp of data" [ngValue]="lamp">Host: {{ lamp.host }} ---- Model: {{ lamp.model }} </option>
+    </select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  
+    <!-- Note that you can pass in anything to the `matDialogClose` attribute. This also includes objects, arrays, etc.
+    Just make sure that you make it a property binding with those [] brackets
+    Example: <button mat-button [matDialogClose]="{'lol': true}">Cancel</button> -->
+  <button mat-button matDialogClose="cancel" color="warn">Cancel</button>
+  <button mat-button matDialogClose="confirm" color="warn" (click)="saveOption()">Save</button>
+</mat-dialog-actions>

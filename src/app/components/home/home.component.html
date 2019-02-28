@@ -1,5 +1,49 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
+<div class="container" [ngClass]="[backgroundBlurred ? 'blurred' : 'container']">
+
+  <button class="settings" mat-raised-button (click)="openSettings()">
+    <fa-icon [icon]="faCog" class="settings-icon"></fa-icon>
+  </button>
+
+  <div class="content" [ngClass]="[alreadyConnected ? '' : 'blurred']">
+
+    <button mat-raised-button
+    (click)="togglePower()" 
+    class="power"
+    [class.offline]="!toggle">
+      <fa-icon [icon]="faPowerOff" size="3x"></fa-icon>
+    </button>
+        
+    <mat-divider class="divide"></mat-divider>
+
+    <p class="description">Brightness:</p>
+    <div>
+      <fa-icon [icon]="faSun" class="sun"></fa-icon>
+      <mat-slider 
+        (change)="changeBrightness($event)"
+        class="slider" 
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [(value)]="value"
+        [thumbLabel]="thumbLabel">
+      </mat-slider>
+    </div>
+
+    <mat-divider class="divide"></mat-divider>
+
+    <p class="description">Color:</p>
+    <div class="slider-color">
+      <color-hue-picker [color]="selectedHue" (onChangeComplete)="changeSlider($event)"></color-hue-picker>
+    </div>
+
+    <mat-divider class="divide"></mat-divider>
+
+    <p class="description">Temperature:</p>
+    <div class="slider-circle">
+      <color-circle [color]="selectedCt" [colors]="colors" width (onChangeComplete)="changeTemperature($event)"></color-circle>
+    </div>
+
+  </div>
+  
+
 </div>

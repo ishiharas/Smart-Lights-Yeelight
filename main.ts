@@ -1,22 +1,26 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, Tray, nativeImage } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
-let win, serve;
+const assetsDirectory = path.join(__dirname, 'dist/assets');
+let win, serve, tray;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
+
 function createWindow() {
-
-  const electronScreen = screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
-
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height
+    width: 350,
+    height: 550,
+    show: false,
+    frame: false,
+    fullscreenable: false,
+    resizable: false,
+    vibrancy: 'dark',
+    webPreferences: {
+      backgroundThrottling: false
+    }
   });
 
   if (serve) {
@@ -31,44 +35,80 @@ function createWindow() {
       slashes: true
     }));
   }
+}
 
-  win.webContents.openDevTools();
+function createTray() {
+  const trayIcon = path.join(assetsDirectory, 'bulbTemplate.png');
+  const nimage = nativeImage.createFromPath(trayIcon);
+  tray = new Tray(nimage);
 
-  // Emitted when the window is closed.
-  win.on('closed', () => {
-    // Dereference the window object, usually you would store window
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null;
+  tray.on('right-click', function (event) {
   });
+  tray.on('double-click', toggleWindow);
+  tray.on('click', function (event) {
+    toggleWindow();
 
+    // Show devtools when command clicked
+    if (win.isVisible() && process.defaultApp && event.metaKey) {
+      win.openDevTools({mode: 'detach'});
+    }
+  });
+}
+
+function getWindowPosition() {
+  const windowBounds = win.getBounds();
+  const trayBounds = tray.getBounds();
+
+  // Center window horizontally below the tray icon
+  const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2));
+
+  // Position window 4 pixels vertically below the tray icon
+  const y = Math.round(trayBounds.y + trayBounds.height);
+
+  return {x: x, y: y};
+}
+
+
+function toggleWindow() {
+  if (win.isVisible()) {
+    win.hide();
+    tray.setHighlightMode('never');
+  } else {
+    showWindow();
+    tray.setHighlightMode('always');
+  }
+}
+
+function showWindow() {
+  const position = getWindowPosition();
+  win.setPosition(position.x, position.y, false);
+  win.show();
+  win.focus();
 }
 
 try {
+  app.dock.hide();
 
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  app.on('ready', createWindow);
+  app.on('ready', () => {
+    createTray();
+    createWindow();
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
-    // On OS X it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
       app.quit();
-    }
   });
 
-  app.on('activate', () => {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-      createWindow();
-    }
+  app.on('browser-window-blur', () => {
+    win.hide();
+    tray.setHighlightMode('never');
   });
+
 
 } catch (e) {
   // Catch Error
-  // throw e;
+  throw e;
 }
