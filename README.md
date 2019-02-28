@@ -22,7 +22,7 @@ the same network. Use the Yeelight App on your smartphone to activate this optio
 This project is build with Angular and Electron.
 I had only the possibility to test the tool with one 
 Yeelight RGB Bulb. In case of strange application behaviour, 
-please let me know through the issue tracker. 
+please let me know through the issue tracker. In case you want to make your own adjustments, you have to following options.
 
 Clone this repository locally :
 
