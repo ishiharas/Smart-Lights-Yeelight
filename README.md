@@ -12,6 +12,9 @@ To be able to use this tool, you need to set your Yeelight device in LAN-Control
 This enables the device control through your local network. Vice Versa the client needs to be in
 the same network. Use the Yeelight App on your smartphone to activate this option. 
 
+## Direct Download
+<summary><a href="https://github.com/ishiharas/Smart-Lights-Yeelight/releases/latest">Latest Release</a></summary>
+
 ## Getting Started
 
 [![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-icon.svg)](https://angular.io/) [![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-icon.svg)](https://electronjs.org/)
